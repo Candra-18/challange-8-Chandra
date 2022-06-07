@@ -11,5 +11,9 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+        "global-require": "off",
+        "import/no-dynamic-require": "off",
+        "class-methods-use-this": ["error", { "enforceForClassFields": false }]
+
     }
 }
