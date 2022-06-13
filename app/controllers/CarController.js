@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 const ApplicationController = require('./ApplicationController');
-const CarAlreadyRentedError = require('../errors');
+const CarAlreadyRentedError = require('../errors/CarAlreadyRentedError');
 
 class CarController extends ApplicationController {
   constructor({ carModel, userCarModel, dayjs }) {
@@ -73,8 +73,12 @@ class CarController extends ApplicationController {
       const activeRent = await this.userCarModel.findOne({
         where: {
           carId: car.id,
-          rentStartedAt: { [Op.gte]: rentStartedAt },
-          rentEndedAt: { [Op.lte]: rentEndedAt },
+          rentStartedAt: {
+            [Op.gte]: rentStartedAt,
+          },
+          rentEndedAt: {
+            [Op.lte]: rentEndedAt,
+          },
         },
       });
 

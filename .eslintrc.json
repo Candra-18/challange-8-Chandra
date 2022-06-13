@@ -16,7 +16,9 @@
         "global-require": "off",
         "import/no-dynamic-require": "off",
         "class-methods-use-this": ["error", { "enforceForClassFields": false }],
-        "no-undef":"off"
+        "no-undef":"off",
+        "no-sequences":"off"
+        
 
     }
 }
