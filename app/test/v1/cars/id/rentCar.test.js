@@ -42,6 +42,16 @@ describe('POST /v1/cars/:id/rent', () => {
     .post(`/v1/cars/${car.body.id}/rent`)
     .set('Authorization', `Bearer ${accessTokenCustomer.body.accessToken}`)
     .set('Content-Type', 'application/json')
+    .send({ })
+    .then((res) => {
+      expect(res.statusCode).toBe(500);
+      expect(res.body).toEqual(res.body);
+    }));
+
+  it('should response with 201 as status code', async () => request(app)
+    .post(`/v1/cars/${car.body.id}/rent`)
+    .set('Authorization', `Bearer ${accessTokenCustomer.body.accessToken}`)
+    .set('Content-Type', 'application/json')
     .send({ rentStartedAt, rentEndedAt })
     .then((res) => {
       expect(res.statusCode).toBe(201);
